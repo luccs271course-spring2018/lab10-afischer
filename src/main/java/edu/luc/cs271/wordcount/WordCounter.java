@@ -24,8 +24,8 @@ public class WordCounter {
     // HINT to do this without a conditional, use the getOrDefault method
     while(words.hasNext()){
       String word = words.next();
-      Integer value = this.theMap.getOrDefault(word,0);
-      this.theMap.put(word,value++);
+      Integer value = this.theMap.getOrDefault(word,0)+1;
+      this.theMap.put(word,value);
     }
   }
 

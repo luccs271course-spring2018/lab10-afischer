@@ -9,7 +9,8 @@ public class Main {
     // set up the scanner so that it separates words based on space and punctuation
     final Scanner input = new Scanner(System.in).useDelimiter("[^\\p{Alnum}]+");
 
-    // TODO complete this main program
+    
+    // DONE complete this main program
     // 1. create a WordCounter instance
     // 2. use this to count the words in the input
     // 3. determine the size of the resulting map
@@ -19,5 +20,24 @@ public class Main {
     //    using Collections.sort and an instance of the provided comparator (after fixing the latter)
     // 7. print the (up to) ten most frequent words in the text
 
+  Map<String,Integer> map = new HashMap<>();
+  WordCounter counter = new WordCounter(map);
+  
+  counter.countWords(input);
+  
+  int size = counter.getCounts().size();
+  
+  ArrayList<Map.Entry<String,Integer>> list = new ArrayList<>(size);
+  
+  for(Map.Entry<String,Integer> entry : map.entrySet()){
+    list.add(entry);
+  }
+    
+  Collections.sort(list, new DescendingByCount());
+  
+  for(int i = 0; i < list.size(); i++){
+      System.out.println(list.get(i).getKey()+" has a frequency of :"+list.get(i).getValue());
+    
+  }
   }
 }
